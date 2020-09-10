@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/column_header_container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="152dp"
+    android:layout_height="60dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/image_view_profile_picture"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:background="@drawable/ic_account_circle_black_60dp"
+        android:backgroundTint="#000000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/image_view_profile_picture"
+        app:layout_constraintRight_toRightOf="@id/image_view_profile_picture"/>
+
+    <TextView
+        android:id="@+id/text_view_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Column H."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintTop_toTopOf="@id/image_view_profile_picture"
+        app:layout_constraintBottom_toTopOf="@id/text_view_details"
+        app:layout_constraintLeft_toRightOf="@id/image_view_profile_picture"/>
+
+    <TextView
+        android:id="@+id/text_view_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="63 bpm | 7,5 h"
+        android:textColor="#000000"
+        android:textSize="12sp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintTop_toBottomOf="@id/text_view_name"
+        app:layout_constraintBottom_toBottomOf="@id/image_view_profile_picture"
+        app:layout_constraintLeft_toRightOf="@id/image_view_profile_picture"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
