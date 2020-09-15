@@ -10,6 +10,11 @@
         android:id="@+id/table_view_athletes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:show_horizontal_separator="false"
+        app:show_vertical_separator="false"
+        app:allow_click_inside_column_header="true"
+        app:allow_click_inside_row_header="true"
+        app:allow_click_inside_cell="true"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <Button

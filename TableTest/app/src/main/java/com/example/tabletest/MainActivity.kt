@@ -1,23 +1,32 @@
 package com.example.tabletest
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import com.evrencoskun.tableview.TableView
+import com.evrencoskun.tableview.listener.ITableViewListener
+import com.evrencoskun.tableview.sort.SortState
 import com.example.tabletest.models.ColumnHeader
 import com.example.tabletest.models.DataCell
 import com.example.tabletest.models.RowHeader
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ITableViewListener {
 
     private val tableAdapter = TableAdapter()
+    private lateinit var tableRecyclerView: TableView
+    private var numberToChange = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        tableRecyclerView = table_view_athletes
+
         table_view_athletes.apply {
             setAdapter(tableAdapter)
             adapter?.setAllItems(colHeaders, rowHeaders, cellData)
             rowHeaderWidth = 320
+            tableViewListener = this@MainActivity
         }
 
         btn.setOnClickListener {
@@ -38,6 +47,7 @@ class MainActivity : AppCompatActivity() {
             tableAdapter.notifyDataSetChanged()
         }
 
+
     }
 
     private fun getRowOfData() =
@@ -46,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             DataCell("6:03"),
             DataCell("150"),
             DataCell("7,5"),
-            DataCell("56,0"),
+            DataCell((++numberToChange).toString()),
             DataCell("143,9"),
             DataCell("67"),
             DataCell("0,76")
@@ -72,6 +82,39 @@ class MainActivity : AppCompatActivity() {
     )
 
     val cellData = listOf(
-        getRowOfData(),getRowOfData(),getRowOfData(),getRowOfData(),getRowOfData()
+        getRowOfData(), getRowOfData(), getRowOfData(), getRowOfData(), getRowOfData()
     )
+
+    override fun onCellLongPressed(cellView: RecyclerView.ViewHolder, column: Int, row: Int) { }
+
+    override fun onColumnHeaderLongPressed(
+        columnHeaderView: RecyclerView.ViewHolder,
+        column: Int
+    ) { }
+
+    override fun onRowHeaderClicked(rowHeaderView: RecyclerView.ViewHolder, row: Int) { }
+
+    override fun onColumnHeaderClicked(columnHeaderView: RecyclerView.ViewHolder, column: Int) {
+        tableRecyclerView.apply {
+            if (getSortingStatus(column) == SortState.ASCENDING) {
+                sortColumn(column, SortState.DESCENDING)
+            } else {
+                sortColumn(column, SortState.ASCENDING)
+            }
+        }
+    }
+
+    override fun onCellClicked(cellView: RecyclerView.ViewHolder, column: Int, row: Int) { }
+
+    override fun onColumnHeaderDoubleClicked(
+        columnHeaderView: RecyclerView.ViewHolder,
+        column: Int
+    ) { }
+
+    override fun onCellDoubleClicked(cellView: RecyclerView.ViewHolder, column: Int, row: Int) { }
+
+    override fun onRowHeaderLongPressed(rowHeaderView: RecyclerView.ViewHolder, row: Int) { }
+
+    override fun onRowHeaderDoubleClicked(rowHeaderView: RecyclerView.ViewHolder, row: Int) { }
+
 }

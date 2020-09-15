@@ -2,5 +2,16 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#00a2ff</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="gray_light">#DDDDDD</color>
+    <color name="selected_blue">#3da6cc</color>
+    <color name="selected_blue_light">#95d0e6</color>
+
+
+    <color name="table_view_default_selected_background_color">#FFFFFF</color>
+    <color name="table_view_default_separator_color">#FFFFFF</color>
+    <color name="table_view_default_shadow_background_color">#FFFFFF</color>
+    <color name="table_view_default_unselected_background_color">#FFFFFF</color>
 </resources>
